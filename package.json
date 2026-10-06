@@ -1,1 +1,1 @@
-{"name":"arva-kyb-review-desk","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js"}}
+{"name":"arva-kyb-review-desk","private":true,"type":"module","scripts":{"test":"node --test tests/*.test.js","evals":"node scripts/run-evals.mjs"}}
