@@ -1,0 +1,23 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { stripDiacritics, basic, personTokens, companyCore, companyNumber, postcode, addressKey, monthsBetween, yearsBetween } from '../app/engine/normalise.js';
+
+test('stripDiacritics removes accents', () => assert.equal(stripDiacritics('Zoë Müller'), 'Zoe Muller'));
+test('basic lowercases and collapses punctuation', () => assert.equal(basic('  Sable & Thread,  LTD. '), 'sable and thread ltd'));
+test('personTokens drops honorifics', () => assert.deepEqual(personTokens('Dr. Fiona Kerrigan'), ['fiona', 'kerrigan']));
+test('personTokens splits hyphenated surnames', () => assert.deepEqual(personTokens('Gareth Lloyd-Pryce'), ['gareth', 'lloyd', 'pryce']));
+test('companyCore strips Ltd', () => assert.equal(companyCore('Wren & Fable Books Ltd'), 'wren and fable books'));
+test('companyCore strips Limited', () => assert.equal(companyCore('Wren and Fable Books Limited'), 'wren and fable books'));
+test('companyCore strips PLC', () => assert.equal(companyCore('Northbank PLC'), 'northbank'));
+test('companyCore treats & and and alike', () => assert.equal(companyCore('A & B Ltd'), companyCore('A and B Limited')));
+test('companyNumber pads numeric numbers to 8 digits', () => assert.equal(companyNumber('9833410'), '09833410'));
+test('companyNumber keeps Scottish prefix', () => assert.equal(companyNumber('sc 612784'), 'SC612784'));
+test('companyNumber strips spaces', () => assert.equal(companyNumber('1148 2907'), '11482907'));
+test('postcode normalises spacing and case', () => assert.equal(postcode('m4 3jr'), 'M43JR'));
+test('postcode makes spaced and unspaced equal', () => assert.equal(postcode('EC1V 2NX'), postcode('ec1v2nx')));
+test('addressKey uses postcode and building number', () => assert.equal(addressKey({ line1: '12 Hilton Mews', postcode: 'M4 3JR' }), 'M43JR|12'));
+test('addressKey ignores street spelling', () => assert.equal(addressKey({ line1: '12 Hilton Mews', postcode: 'M4 3JR' }), addressKey({ line1: '12, Hilton Mews.', postcode: 'm4 3jr' })));
+test('monthsBetween counts whole months', () => assert.equal(monthsBetween('2026-07-06', '2026-10-06'), 3));
+test('monthsBetween is not rounded up', () => assert.equal(monthsBetween('2026-07-07', '2026-10-06'), 2));
+test('monthsBetween accepts year-month', () => assert.ok(monthsBetween('2026-01', '2026-10-06') >= 9));
+test('yearsBetween is fractional', () => assert.ok(Math.abs(yearsBetween('2025-10-06', '2026-10-06') - 1) < 0.01));
