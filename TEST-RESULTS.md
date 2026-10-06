@@ -75,7 +75,7 @@ One defect found and fixed during this run: at 390px, `#/case/NB-24105` (four-la
 | NB-24107: confirm HIGH, approve | Approve disabled: "High-tier applications cannot be approved from the desk; escalate to EDD" |
 | NB-24107: escalate to EDD with rationale | Recorded; audit rows `tier_confirmed` and `disposition_recorded` written |
 | NB-24101: change tier to Medium with no rationale | Blocked: "Upgrading or downgrading the tier needs a rationale of at least 20 characters" |
-| Audit: Export CSV | Downloaded `kyb-audit-all-cases-*.csv`, 312 data rows + header, matches on-screen count (313) including analyst rows |
+| Audit: Export CSV | Downloaded `kyb-audit-all-cases-*.csv`, 313 data rows + header, matching the 313-row count shown on screen including analyst rows |
 | NB-24110 (dissolved) | REG-01 has no discount option; approve disabled: "REG-01 is a hard stop that cannot be discounted" |
 
 ## Screenshots
