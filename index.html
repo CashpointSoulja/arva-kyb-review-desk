@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KYB Review Desk · Northbank onboarding (concept)</title>
+<meta name="description" content="A concept review desk for business onboarding: every KYB check shows its rule and evidence, risk tiers are explained, and a human confirms every decision. Synthetic data only.">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/dm-sans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+<a class="skip" href="#view">Skip to content</a>
+<div class="announce" role="note"><span>Concept build on synthetic data: every company, person, registry entry and article here is fictional.</span> <a href="#/about">How it works <span aria-hidden="true">→</span></a></div>
+<header class="topbar">
+  <a class="brand" href="#/queue" aria-label="KYB Review Desk home"><img src="assets/arva-logo.svg" alt="Arva" width="85" height="18"><span class="brand-div" aria-hidden="true"></span><span class="brand-name">KYB Review Desk</span></a>
+  <div class="topbar-right">
+    <span class="tenant">Northbank · Business onboarding</span>
+    <label class="analyst-pick"><span class="sr">Signed-in analyst</span><select id="analyst"></select></label>
+  </div>
+</header>
+<div class="shell">
+  <nav class="side" aria-label="Main">
+    <a href="#/queue" data-nav="queue"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>Review queue</a>
+    <a href="#/case" data-nav="case"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h9l4 4v14H6z M14 3v5h5 M9 13h7 M9 17h5"/></svg>Case file</a>
+    <a href="#/audit" data-nav="audit"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7v5l3 2 M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18"/></svg>Audit trail</a>
+    <a href="#/evals" data-nav="evals"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6 M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/></svg>Eval lab</a>
+    <a href="#/metrics" data-nav="metrics"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20V10 M10 20V4 M16 20v-7 M22 20H2"/></svg>Metrics</a>
+    <a href="#/about" data-nav="about"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18 M12 11v6 M12 7.5v.5"/></svg>How it works</a>
+  </nav>
+  <main id="view" tabindex="-1"></main>
+</div>
+<aside id="drawer" class="drawer" aria-hidden="true" aria-label="Evidence source"></aside>
+<div id="scrim" class="scrim" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<footer class="foot">
+  <p><strong>Independent concept by Ayo Ahmed. Not affiliated with Arva AI.</strong></p>
+  <p>All companies, people, registry entries and media are synthetic. Arva name and logo belong to their owner and are used here only to show the concept in context.</p>
+</footer>
+<script type="module" src="app/ui/main.js"></script>
+</body>
+</html>
